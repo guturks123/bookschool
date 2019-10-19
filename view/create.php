@@ -1,0 +1,106 @@
+<div class="container">
+        <div class="row mt-3">
+            <div class="col-lg-6">
+                <h1 class="text-info"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;เพิ่มข้อมูล</h1>
+            </div>
+        </div>
+        <hr class="bg-info">
+        <div id="alert"></div>
+          <form class="ui form" method="post" id="insert-form">
+  <div class="seven wide field">
+    <h3 class="text-danger">ภาคเรียน/ปีการศึกษา</h3>
+    <div class="four fields">
+      <div class="field">
+      <select class="ui fluid search dropdown" name="term">
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+      </div>
+      <div class="field">
+        <input maxlength="4" type="text" name="termyear" placeholder="ปีการศึกษา">
+
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <h3 class="text-danger">รายละเอียด</h3>
+    <div class="fields">
+      <div class="two wide field">
+        <label>รหัสวิชา</label><input maxlength="9" id="codesubject" type="text" name="subjectcode" placeholder="2240 2240">
+      </div>
+      <div class="four wide field">
+      <label>ชื่อวิชา</label><input type="text" name="subjectname" placeholder="วิทยาศาสตร์เพื่องานอาชีพ...">
+      </div>
+      <div class="three wide field">
+      <label>ระดับชั้น</label><input type="text" name="class" placeholder="ปวช,ปวส">
+      </div>
+      <div class="five wide field">
+      <label>ครูผู้สอน</label><input type="text" name="teacher" placeholder="">
+      </div>
+    </div>
+  </div>
+  <div class="fields">
+    <div class="two wide field ">
+      <label>ลำดับที่</label>
+     <input type="text" name="id1">
+    </div>
+    <div class="two wide field ">
+      <label>ลำดับที่ 2</label>
+     <input type="text" name="id2">
+    </div>
+    <div class="two wide field ">
+      <label>ปี พ.ศ.</label>
+     <input type="text" name="bookyear">
+    </div>
+  </div>
+  <h3 class="text-danger">รายละเอียดหนังสือ</h3>
+  <div class="fields">
+    <div class="four wide field ">
+      <label>ชื่อผู้แต่ง</label>
+     <input type="text" name="bookname">
+    </div>
+    <div class="four wide field ">
+      <label>สำนักพิมพ์</label>
+     <input type="text" name="publisher">
+    </div>
+  </div>
+  <div class="fields">
+    <div class="four wide field ">
+      <label>กระดาษ</label>
+     <select class="ui fluid dropdown" name="paper">
+       <option value="ปอนด์">ปอนด์</option>
+       <option value="ถนอมสายตา">ถนอมสายตา</option>
+       <option value="อาร์ต">อาร์ต</option>
+     </select>
+    </div>
+    <div class="four wide field ">
+      <label>รูปแบบ</label>
+      <select class="ui fluid dropdown" name="format">
+       <option value="๑ สี">1 สี</option>
+       <option value="๒ สี">2 สี</option>
+       <option value="๔ สี">4 สี</option>
+     </select>
+    </div>
+    <div class="four wide field ">
+      <label>ขนาดรูปเล่ม</label>
+      <select class="ui fluid dropdown" name="size">
+       <option value="๘ หน้ายก">8 หน้ายก</option>
+       <option value="A๔">A4</option>
+       <option value="อื่นๆ">อื่นๆ</option>
+     </select>
+    </div>
+  </div>
+  <div class="fields">
+    <div class="two wide field ">
+      <label>ราคา</label>
+     <input type="text" name="price">
+    </div>
+    <div class="seven wide field ">
+      <label>เหตุผลที่เลือก</label>
+     <input type="text" name="reason">
+    </div>
+  </div>
+  <input type="submit" class="ui green button" id="insert" value="บันทึกข้อมูล">
+</form>
+    </div>
+    <br>
