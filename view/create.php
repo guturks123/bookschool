@@ -29,13 +29,18 @@
         <label>รหัสวิชา</label><input maxlength="9" id="codesubject" type="text" name="subjectcode" placeholder="2240 2240">
       </div>
       <div class="four wide field">
-      <label>ชื่อวิชา</label><input type="text" name="subjectname" placeholder="วิทยาศาสตร์เพื่องานอาชีพ...">
+      <label>ชื่อวิชา</label><input type="text" id="subjectname" name="subjectname" placeholder="วิทยาศาสตร์เพื่องานอาชีพ...">
       </div>
       <div class="three wide field">
       <label>ระดับชั้น</label><input type="text" name="class" placeholder="ปวช,ปวส">
       </div>
       <div class="five wide field">
-      <label>ครูผู้สอน</label><input type="text" name="teacher" placeholder="">
+      <label>ครูผู้สอน</label><input list="teachers" id="teacher" type="text" name="teacher" placeholder="">
+
+  <datalist id="teachers">
+
+  </datalist>
+
       </div>
     </div>
   </div>
@@ -100,7 +105,7 @@
      <input type="text" name="reason">
     </div>
   </div>
-  <input type="submit" class="ui green button" id="insert" value="บันทึกข้อมูล">
+  <button type="submit" class="ui green button" id="insert"><i class="far fa-save"></i>&nbsp;&nbsp;บันทึกข้อมูล</button>
 </form>
     </div>
     <br>

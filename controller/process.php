@@ -18,6 +18,7 @@ if ($action == 'read') {
 		}
 
 		$result['data'] = $read;
+		echo json_encode($result, JSON_UNESCAPED_UNICODE);
 	}
 }
 
@@ -55,8 +56,32 @@ if ($action == 'create') {
 		$result['message'] = 'Success';
 	}
 	;
+}
+;
+//sub_code LIKE '%" . $_POST['codesubject'] . "%'"
+if ($action == 'fetchsubname') {
+	$search = $_POST['codesubject'];
+	if ($sql = $con->fetchcode($search)) {
+		while ($data = $sql->fetch_assoc()) {
+
+			echo $data['sub_name'];
+		}
+	}
 
 }
+
+if ($action == 'fetchteach') {
+	$search = $_POST['teacher'];
+	if ($sql = $con->fetchteacher($search)) {
+		while ($data = $sql->fetch_assoc()) {
+
+			echo "<option value='" . $data['tea_name'] . "'></option>";
+			//echo $data['sub_name'];
+		}
+	}
+
+}
+;
 
 //echo json_encode($result, JSON_UNESCAPED_UNICODE);
 
