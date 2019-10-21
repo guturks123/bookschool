@@ -17,7 +17,7 @@ if ($action == 'read') {
 			array_push($read, $data);
 		}
 
-		$result['data'] = $read;
+		$result['infor'] = $read;
 		echo json_encode($result, JSON_UNESCAPED_UNICODE);
 	}
 }
