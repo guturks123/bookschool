@@ -1,10 +1,9 @@
+
 <?php
 include_once 'controller/connect.php';
-
- $con = new DB();
-
-  $view = $con->viewData('tbook');
- ?>
+$con = new DB();
+$view = $con->viewData('tbook');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,10 +13,13 @@ include_once 'controller/connect.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Systeam Book</title>
     <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./asset/css/semantic.min.css">
+    <link rel="stylesheet" href="./asset/datable/semantic.min.css">
+    <link rel="stylesheet" href="./asset/datable/css/dataTables.bootstrap4.min.css">
+
     <script src="./asset/js/jquery.min.js"></script>
     <script src="./asset/js/vue.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <style>
         body{
           background-color:#fcfcfc;
@@ -52,11 +54,12 @@ include_once 'controller/connect.php';
             </div>
           </div>
           <hr class="bg-danger">
-          <div id="app2"  >
+          <?php if (@$view->num_rows > 0) {
+	?>
+          <div id="app2">
                 <table id="table-infor" class="ui red selectable celled table">
         <thead>
           <tr>
-            <th>เลขที่</th>
           <th>เทอม</th>
           <th>ปีการศึกษา</th>
           <th>รหัสวิชา</th>
@@ -65,34 +68,37 @@ include_once 'controller/connect.php';
           <th>แก้ไข</th>
           <th>ลบ</th>
         </tr></thead><tbody>
-           <?php while($data = $view->fetch_assoc()){ ?>
-          <tr>
-            <td><?php echo $data['id']; ?></td>
+           <?php while ($data = $view->fetch_assoc()) {?>
+          <tr id="datainfor">
             <td><?php echo $data['book_term']; ?></td>
             <td><?php echo $data['book_termyear']; ?></td>
             <td><?php echo $data['book_subcode']; ?></td>
             <td><?php echo $data['book_subname']; ?></td>
             <td><?php echo $data['book_teacher'] ?></td>
-            <td><button class="ui green button"><i class="far fa-edit"></i></button></td>
-            <td><button class="ui red button"><i class="far fa-trash-alt"></i></button></td>
-          </tr>
-           <?php  }; ?>
-        </tbody>
-      </table>
-    </div>
-  </div>
-      </div>
+            <td><button class="ui green button"><i class="far fa-edit"></i>&nbsp;&nbsp;แก้ไข</button></td>
+            <td><button class="ui red button" onclick="delete_data(<?php echo $data['id']; ?>);"><i class="far fa-trash-alt"></i>&nbsp;&nbsp;ลบ</button></td>
 
+          </tr>
+           <?php }
+	;} else {?>
+	         <h1 style="text-align: center;" class="text-danger">ไม่พบข้อมูล</h1>
+<?php }
+;?>
+        </tbody>
+
+      </table>
+      <hr class="bg-info">
+    </div>
+
+  </div>
+
+      </div>
+<br><br><br>
 <!-- END app -->
 </div>
-
-  <script>
-      $(document).ready(function() {
-
-            $('#table-infor').on('submit')
-      })
-  </script>
-
+    <script src="./asset/datable/js/jquery.dataTables.min.js"></script>
+    <script src="./asset/datable/js/dataTables.bootstrap4.min.js"></script>
+    <script src="./asset/js/app2.js"></script>
     <script src="./asset/js/bootstrap.min.js"></script>
     <script src="./asset/js/all.min.js"></script>
     <script src="./asset/js/semantic.min.js"></script>

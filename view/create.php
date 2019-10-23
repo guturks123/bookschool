@@ -32,9 +32,13 @@
       <label>ชื่อวิชา</label><input type="text" id="subjectname" name="subjectname" placeholder="วิทยาศาสตร์เพื่องานอาชีพ...">
       </div>
       <div class="three wide field">
-      <label>ระดับชั้น</label><input type="text" name="class" placeholder="ปวช,ปวส">
+      <label>ระดับชั้น</label>
+      <select class="ui fluid dropdown" name="class">
+       <option value="ปวช">ปวช</option>
+       <option value="ปวส">ปวส</option>
+     </select>
       </div>
-      <div class="five wide field">
+      <div class="four wide field">
       <label>ครูผู้สอน</label><input list="teachers" id="teacher" type="text" name="teacher" placeholder="">
 
   <datalist id="teachers">

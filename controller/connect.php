@@ -41,6 +41,15 @@ class DB {
 		}
 	}
 
+	public function delete($query) {
+		$delete = $this->link->query($query);
+		if ($delete) {
+			return $delete;
+		} else {
+			return false;
+		}
+	}
+
 	public function viewData($table) {
 
 		$sql = "SELECT * FROM $table";

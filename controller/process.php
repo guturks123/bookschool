@@ -17,7 +17,7 @@ if ($action == 'read') {
 			array_push($read, $data);
 		}
 
-		$result['infor'] = $read;
+		$result['data'] = $read;
 		echo json_encode($result, JSON_UNESCAPED_UNICODE);
 	}
 }
@@ -82,6 +82,12 @@ if ($action == 'fetchteach') {
 
 }
 ;
+
+if ($action == 'delete') {
+	$id = $_POST['id'];
+	$sql = "DELETE FROM tbook WHERE id = $id";
+	$con->delete($sql);
+}
 
 //echo json_encode($result, JSON_UNESCAPED_UNICODE);
 
