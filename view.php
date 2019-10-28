@@ -254,8 +254,6 @@ $view2 = $con->viewData('tbook');
 
       </div>
 <br><br><br>
-<!-- Modal Edit -->
-<!-- Modal -->
 
 <!-- END app -->
 </div>  
