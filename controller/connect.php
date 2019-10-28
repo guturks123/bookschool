@@ -32,6 +32,15 @@ class DB {
 		}
 	}
 
+	public function update($query) {
+		$update = $this->link->query($query);
+		if ($update) {
+			return $update;
+		} else {
+			return false;
+		}
+	}
+	
 	public function select($query) {
 		$select = $this->link->query($query);
 		if ($select->num_rows > 0) {
@@ -53,6 +62,13 @@ class DB {
 	public function viewData($table) {
 
 		$sql = "SELECT * FROM $table";
+		$query = $this->select($sql);
+		return $query;
+	}
+
+	public function viewDataEdit($table,$id) {
+
+		$sql = "SELECT * FROM $table WHERE id = $id";
 		$query = $this->select($sql);
 		return $query;
 	}
