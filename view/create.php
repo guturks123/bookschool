@@ -1,12 +1,16 @@
+
+
 <div class="container">
         <div class="row mt-3">
             <div class="col-lg-6">
-                <h1 class="text-info"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;เพิ่มข้อมูล</h1>
+                <h1 class="text-dark">ระบบ....วิทยาลัยอาชีวศึกษาชลบุรี</h1>
             </div>
         </div>
         <hr class="bg-info">
-        <div id="alert"></div>
-          <form class="ui form" method="post" id="insert-form">
+          <div class="card border-primary mb-3">
+  <h1 class="card-header text-info"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;เพิ่มข้อมูล</h1>
+  <div class="card-body">
+    <form class="ui form" method="post" id="insert-form">
   <div class="seven wide field">
     <h3 class="text-danger">ภาคเรียน/ปีการศึกษา</h3>
     <div class="four fields">
@@ -48,13 +52,10 @@
       </div>
     </div>
   </div>
+  <h3 class="text-danger">ข้อมูลการอนุญาติ</h3>
   <div class="fields">
     <div class="two wide field ">
       <label>ลำดับที่</label>
-     <input type="text" name="id1">
-    </div>
-    <div class="two wide field ">
-      <label>ลำดับที่ 2</label>
      <input type="text" name="id2">
     </div>
     <div class="two wide field ">
@@ -111,5 +112,7 @@
   </div>
   <button type="submit" class="ui green button" id="insert"><i class="far fa-save"></i>&nbsp;&nbsp;บันทึกข้อมูล</button>
 </form>
+  </div>
+</div>
     </div>
     <br>

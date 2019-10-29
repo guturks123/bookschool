@@ -51,10 +51,15 @@ $view2 = $con->viewData('tbook');
       <div class="container">
           <div class="row mt-3">
             <div class="col-lg-6">
-              <h1 class="text-danger">ดูข้อมูล</h1>
+              <h1 class="text-dark">ระบบ....วิทยาลัยอาชีวศึกษาชลบุรี</h1>
             </div>
           </div>
           <hr class="bg-danger">
+		  
+		  <div class="card border-danger mb-3">
+  <h1 class="card-header text-danger">ข้อมูล</h1>
+  <div class="card-body text-dark border">
+     
           <?php if (@$view->num_rows > 0) {
 	?>
           <div id="app2">
@@ -251,6 +256,10 @@ $view2 = $con->viewData('tbook');
     </div>
 
   </div>
+</div>
+		  
+		 
+  </div>
 
       </div>
 <br><br><br>
@@ -261,8 +270,7 @@ $view2 = $con->viewData('tbook');
     <script src="./asset/datable/js/jquery.dataTables.min.js"></script>
     <script src="./asset/datable/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script src="./asset/js/app5.js"></script>
-    <script src="./asset/js/app3.js"></script>
+    <script src="./asset/js/app2.js"></script>
     <script src="./asset/js/bootstrap.min.js"></script>
     <script src="./asset/js/all.min.js"></script>
     <script src="./asset/js/semantic.min.js"></script>
