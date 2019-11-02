@@ -1,12 +1,16 @@
+
+
 <div class="container">
         <div class="row mt-3">
             <div class="col-lg-6">
-                <h1 class="text-info"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;เพิ่มข้อมูล</h1>
+                <h1 class="text-dark">ระบบ....วิทยาลัยอาชีวศึกษาชลบุรี</h1>
             </div>
         </div>
         <hr class="bg-info">
-        <div id="alert"></div>
-          <form class="ui form" method="post" id="insert-form">
+          <div class="card border-primary mb-3">
+  <h1 class="card-header text-info"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;เพิ่มข้อมูล</h1>
+  <div class="card-body">
+    <form class="ui form" method="post" id="insert-form">
   <div class="seven wide field">
     <h3 class="text-danger">ภาคเรียน/ปีการศึกษา</h3>
     <div class="four fields">
@@ -29,7 +33,7 @@
         <label>รหัสวิชา</label><input maxlength="9" id="codesubject" type="text" name="subjectcode" placeholder="2240 2240">
       </div>
       <div class="four wide field">
-      <label>ชื่อวิชา</label><input type="text" id="subjectname" name="subjectname" placeholder="วิทยาศาสตร์เพื่องานอาชีพ...">
+      <label>ชื่อวิชา</label><input maxlength="50" type="text" id="subjectname" name="subjectname" placeholder="วิทยาศาสตร์เพื่องานอาชีพ...">
       </div>
       <div class="three wide field">
       <label>ระดับชั้น</label>
@@ -39,7 +43,7 @@
      </select>
       </div>
       <div class="four wide field">
-      <label>ครูผู้สอน</label><input list="teachers" id="teacher" type="text" name="teacher" placeholder="">
+      <label>ครูผู้สอน</label><input maxlength="70" list="teachers" id="teacher" type="text" name="teacher" placeholder="">
 
   <datalist id="teachers">
 
@@ -48,29 +52,26 @@
       </div>
     </div>
   </div>
+  <h3 class="text-danger">ข้อมูลการอนุญาติ</h3>
   <div class="fields">
     <div class="two wide field ">
       <label>ลำดับที่</label>
-     <input type="text" name="id1">
-    </div>
-    <div class="two wide field ">
-      <label>ลำดับที่ 2</label>
-     <input type="text" name="id2">
+     <input maxlength="3" type="text" name="id2">
     </div>
     <div class="two wide field ">
       <label>ปี พ.ศ.</label>
-     <input type="text" name="bookyear">
+     <input maxlength="4" type="text" name="bookyear">
     </div>
   </div>
   <h3 class="text-danger">รายละเอียดหนังสือ</h3>
   <div class="fields">
     <div class="four wide field ">
       <label>ชื่อผู้แต่ง</label>
-     <input type="text" name="bookname">
+     <input maxlength="50" type="text" name="bookname">
     </div>
     <div class="four wide field ">
       <label>สำนักพิมพ์</label>
-     <input type="text" name="publisher">
+     <input maxlength="80" type="text" name="publisher">
     </div>
   </div>
   <div class="fields">
@@ -102,7 +103,7 @@
   <div class="fields">
     <div class="two wide field ">
       <label>ราคา</label>
-     <input type="text" name="price">
+     <input maxlength="6" type="text" name="price">
     </div>
     <div class="seven wide field ">
       <label>เหตุผลที่เลือก</label>
@@ -111,5 +112,7 @@
   </div>
   <button type="submit" class="ui green button" id="insert"><i class="far fa-save"></i>&nbsp;&nbsp;บันทึกข้อมูล</button>
 </form>
+  </div>
+</div>
     </div>
     <br>
