@@ -17,9 +17,6 @@ class DB {
 
 	public function connectDatabase() {
 		$this->link = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
-		if (!$this->link) {
-			echo 'Connect Faild !!';
-		}
 		mysqli_set_charset($this->link, "utf8");
 	}
 

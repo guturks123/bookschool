@@ -51,7 +51,6 @@ if ($action == 'create') {
 	@$subjectname = $_POST['subjectname'];
 	@$class = $_POST['class'];
 	@$teacher = $_POST['teacher'];
-	@$id = $_POST['id1'];
 	@$id2 = $_POST['id2'];
 	@$bookyear = $_POST['bookyear'];
 	@$bookname = $_POST['bookname'];
@@ -63,13 +62,13 @@ if ($action == 'create') {
 	@$reason = $_POST['reason'];
 
 	$sql = "INSERT INTO tbook (book_term,book_termyear,book_subcode,book_subname,
-            book_class,book_teacher,book_id,book_id2,book_year,book_name,book_publisher,
+            book_class,book_teacher,book_id2,book_year,book_name,book_publisher,
             book_paper,book_format,book_size,book_price,book_reason) VALUES ('$term','$termyear','$subjectcode','$subjectname',
-            '$class','$teacher','$id','$id2','$bookyear','$bookname','$publisher','$paper','$format'
+            '$class','$teacher','$id2','$bookyear','$bookname','$publisher','$paper','$format'
             ,'$size','$price','$reason')";
 
 	if (empty($termyear) || empty($subjectcode) || empty($subjectname) || empty($class) || empty($teacher)
-		|| empty($id) || empty($id2) || empty($bookyear) || empty($bookname) ||
+		  || empty($bookyear) || empty($bookname) ||
 		empty($publisher) || empty($price) || empty($reason)) {
 		echo 'Error';
 	} else {

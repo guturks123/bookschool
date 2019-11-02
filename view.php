@@ -1,5 +1,9 @@
 
 <?php
+session_start();
+if(empty($_SESSION['user_id'])){
+    header('location:login.php');
+};
 include_once 'controller/connect.php';
 $con = new DB();
 $view = $con->viewData('tbook');
@@ -30,31 +34,21 @@ $view2 = $con->viewData('tbook');
 <body>
 
 <!-- menu -->
-<div id="app">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" @click="viewIndex=true,viewAdd=false" href="#"><i class="fas fa-book"></i>&nbsp;&nbsp;Book</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a  class="nav-item nav-link" @click="viewAdd=true,viewIndex=false"  href="index.php"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;เพิ่มข้อมูล <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link active" href="#">ดูข้อมูล</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
-    </div>
-  </div>
-</nav>
-</div>
-<br>
+<?php include 'view/menu.php' ?>
     <!-- Select data -->
     <div id="app2">
       <div class="container">
           <div class="row mt-3">
             <div class="col-lg-6">
-              <h1 class="text-danger">ดูข้อมูล</h1>
+              <h1 class="text-dark">ระบบ....วิทยาลัยอาชีวศึกษาชลบุรี</h1>
             </div>
           </div>
           <hr class="bg-danger">
+		  
+		  <div class="card border-danger mb-3">
+  <h1 class="card-header text-danger">ข้อมูล</h1>
+  <div class="card-body text-dark border">
+     
           <?php if (@$view->num_rows > 0) {
 	?>
           <div id="app2">
@@ -251,6 +245,10 @@ $view2 = $con->viewData('tbook');
     </div>
 
   </div>
+</div>
+		  
+		 
+  </div>
 
       </div>
 <br><br><br>
@@ -260,9 +258,8 @@ $view2 = $con->viewData('tbook');
         
     <script src="./asset/datable/js/jquery.dataTables.min.js"></script>
     <script src="./asset/datable/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script src="./asset/js/app5.js"></script>
-    <script src="./asset/js/app3.js"></script>
+    <script src="./asset/js/sweetalert.js"></script>
+    <script src="./asset/js/app2.js"></script>
     <script src="./asset/js/bootstrap.min.js"></script>
     <script src="./asset/js/all.min.js"></script>
     <script src="./asset/js/semantic.min.js"></script>

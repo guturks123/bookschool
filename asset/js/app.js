@@ -1,6 +1,5 @@
 $(document).ready(function() {
-    
-    $('#codesubject').keyup(function(){
+         $('#codesubject').keyup(function(){
                 var txt = $(this).val();
                  $.ajax({
                     url: 'controller/process.php?action=fetchsubname',
@@ -18,7 +17,7 @@ $(document).ready(function() {
                 url: 'controller/process.php?action=fetchteach',
                 method:'post',
                 data:{teacher:txt},
-                success:function(data){
+                success:function(data){ 
                   $('#teachers').html(data);
                 }
             });
