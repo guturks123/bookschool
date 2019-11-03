@@ -1,3 +1,17 @@
+<?php
+		session_start();
+		include_once 'controller/connect.php';
+		$con = new DB();
+		if(empty($_SESSION['user_id'])){
+			header('location:login.php');
+		};
+		// ข้อมูลบุคคล
+		@$user_id = $_SESSION['user_id'];
+		@$teach = $con->viewDataTeach($user_id);
+		@$data_teach = $teach->fetch_assoc();
+		
+		if($_SESSION['user_level'] == 1){
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,43 +20,195 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Systeam Book</title>
     <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./asset/css/semantic.min.css">
+    <link rel="stylesheet" href="./asset/datable/semantic.min.css">
+	<link rel="stylesheet" href="./asset/css/style.css">
+    <link rel="stylesheet" href="./asset/datable/css/dataTables.bootstrap4.min.css">
+
     <script src="./asset/js/jquery.min.js"></script>
-    <script src="./asset/js/vue.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <style>
-        body{
-          background-color:#fcfcfc;
-        }
-    </style>
 </head>
 <body>
+		<!-- Menu -->
+			<?php include 'view/menu.php' ?>
+			<!-- Content -->
+				<div class="container-fluid">
+			<div class="row">
+		<div class="col-md-6">
+			<div class="ui purple segment">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+					<h1 class="ui violet inverted header">ประชาสัมพันธ์</h1>
+					<hr>
+							<!-- INFO -->
+					
+				<div class="ui divided selection list">
+				<?php if(@$public = $con->viewDataPublic()){ ?>
+				<?php while(@$data_public = @$public->fetch_assoc()){ ?>
+					  <a class="item">
+					  <?php if(@$data_public['public_level'] == 1 ){ ?>
+						<div class="ui green horizontal label">ทั่วไป</div>
+					  <?php }else{ ?>
+					  <div class="ui red horizontal label">ด่วน</div>
+					  <?php  };?>
+						<?php echo @$data_public['public_topic'];?> &nbsp;[<?php echo @$data_public['public_date'] ?>]
+					  </a>
+				<?php }; ?>
+				</div>
+					
+							<!-- END INFO -->
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="col-md-6">
+			<div class="ui red segment">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+					<h1 class="ui red inverted header">ข้อมูลส่วนตัว</h1>
+					<hr>
+					<h4>ชื่อ-นามสกุล : <?php echo $data_teach['user_fullname'];?></h4>
+					<h4>เพิ่มข้อมูลไปแล้ว : <?php echo $data_teach['user_fullname'];?></h4>
+					<h4>IP <?php echo $_SERVER['REMOTE_ADDR'];?></h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php };?>
+			</div>
+			<br>
+		<!-- Report -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="ui red segment">
+						<div class="row">
+							<div class="col-md-12">
+							<h1 class="ui red inverted header">รายงานปัญหา</h1>
+							<hr>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+									<div class="ui form">
+									  <div class="field">
+										<h3>หัวข้อ</h3>
+										<input type="text">
+									 </div>
+									 <div class="field">
+										<h3>เนื้อหา</h3>
+										<textarea></textarea>
+										
+									 </div>
+							</div>
+						</div>
+					</div>
+						<div class="row">
+							<div class="col-md-12 ">
+							<br>
+									<button class="ui green button float-right">แจ้งปัญหา</button>
+						</div>
+					</div>
+				</div>
+			</div>
+				</div>
+				<br><br><br>
+				
+				
+		<script src="./asset/js/bootstrap.min.js"></script>
+		<script src="./asset/js/app.js"></script>
+		<script src="./asset/js/sweetalert.js"></script>		
+		<script src="./asset/js/semantic.min.js"></script>	
 
-<!-- menu -->
-<div id="app">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" @click="viewIndex=true,viewAdd=false" href="#"><i class="fas fa-book"></i>&nbsp;&nbsp;Book</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a  class="nav-item nav-link active" @click="viewAdd=true,viewIndex=false"  href="#"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;เพิ่มข้อมูล <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="view.php">ดูข้อมูล</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
-    </div>
-  </div>
-</nav>
-<br>
-    <!-- Insert data -->
-    <?php include 'view/create.php'?>
-<!-- END app -->
-</div>
-
-    <script src="./asset/js/app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script src="./asset/js/bootstrap.min.js"></script>
-    <script src="./asset/js/all.min.js"></script>
-    <script src="./asset/js/semantic.min.js"></script>
+		
 </body>
 </html>
+
+		<!-- ADMIN -->
+		<?php }else if($_SESSION['user_level'] == 2){ ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Systeam Book</title>
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./asset/datable/semantic.min.css">
+	<link rel="stylesheet" href="./asset/css/style.css">
+    <link rel="stylesheet" href="./asset/datable/css/dataTables.bootstrap4.min.css">
+
+    <script src="./asset/js/jquery.min.js"></script>
+</head>
+<body>
+		<!-- Menu -->
+			<?php include 'view/menu.php' ?>
+			<!-- Content -->
+				<div class="container-fluid">
+			<div class="row">
+		<div class="col-md-6">
+			<div class="ui purple segment">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+					<h1 class="ui violet inverted header">ประชาสัมพันธ์</h1>
+					<hr>
+							<!-- INFO -->
+					
+				<div class="ui divided selection list">
+				<?php if(@$public = $con->viewDataPublic()){ ?>
+				<?php while(@$data_public = @$public->fetch_assoc()){ ?>
+					  <a class="item">
+					  <?php if(@$data_public['public_level'] == 1 ){ ?>
+						<div class="ui green horizontal label">ทั่วไป</div>
+					  <?php }else{ ?>
+					  <div class="ui red horizontal label">ด่วน</div>
+					  <?php  };?>
+						<?php echo @$data_public['public_topic'];?> &nbsp;[<?php echo @$data_public['public_date'] ?>]
+					  </a>
+				<?php }; ?>
+				</div>
+					
+							<!-- END INFO -->
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="col-md-6">
+			<div class="ui red segment">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+					<h1 class="ui red inverted header">สมาชิกทั้งหมด</h1>
+					<hr>
+					<h4>ชื่อ-นามสกุล : <?php echo $data_teach['user_fullname'];?></h4>
+					<h4>เพิ่มข้อมูลไปแล้ว : <?php echo $data_teach['user_fullname'];?></h4>
+					<h4>IP <?php echo $_SERVER['REMOTE_ADDR'];?></h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php };?>
+			</div>
+			<br>
+		<!-- Report -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="ui red segment">
+						<div class="row">
+							<div class="col-md-12">
+							<h1 class="ui red inverted header">รายงานปัญหา</h1>
+							<hr>
+							</div>
+						</div>
+				</div>
+			</div>
+				</div>
+				<br><br><br>
+				
+				
+		<script src="./asset/js/bootstrap.min.js"></script>
+		<script src="./asset/js/app.js"></script>
+		<script src="./asset/js/sweetalert.js"></script>		
+		<script src="./asset/js/semantic.min.js"></script>	
+
+		
+</body>
+</html>
+
+		<?php }; ?>	

@@ -1,5 +1,6 @@
 <?php
 include_once 'config.php';
+include_once 'page.php';
 
 class DB {
 	private $host = DB_HOST;
@@ -17,9 +18,6 @@ class DB {
 
 	public function connectDatabase() {
 		$this->link = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
-		if (!$this->link) {
-			echo 'Connect Faild !!';
-		}
 		mysqli_set_charset($this->link, "utf8");
 	}
 
@@ -58,17 +56,45 @@ class DB {
 			return false;
 		}
 	}
+		//ดูข้อมูลหน้า USER
+	public function viewDataID($table,$id) {
 
+		$sql = "SELECT * FROM $table WHERE book_idteach = $id ";
+		$query = $this->select($sql);
+		return $query;
+	}
+	
 	public function viewData($table) {
 
 		$sql = "SELECT * FROM $table";
 		$query = $this->select($sql);
 		return $query;
 	}
+	
+	public function viewDataAdmin($table) {
 
+		$sql = "SELECT * FROM $table";
+		$query = $this->select($sql);
+		return $query;
+	}
+	
+	public function viewDataPublic() {
+
+		$sql = "SELECT * FROM tbookpublic ORDER BY public_level DESC";
+		$query = $this->select($sql);
+		return $query;
+	}
+	
 	public function viewDataEdit($table,$id) {
 
 		$sql = "SELECT * FROM $table WHERE id = $id";
+		$query = $this->select($sql);
+		return $query;
+	}
+	//ข้อมูลบุคคล
+	public function viewDataTeach($id) {
+
+		$sql = "SELECT * FROM tbookuser WHERE user_id = $id";
 		$query = $this->select($sql);
 		return $query;
 	}
